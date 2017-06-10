@@ -5,16 +5,16 @@
   
   <title>Python爬虫 | csh012</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="用Python(3)开发轻量级爬虫，实现不需要登录的静态网页的抓取。爬虫是什么？有什么价值？ 爬虫是一段自动抓取互联网信息的程序。将互联网数据，为我所用。  简单爬虫架构由什么组成？ 爬虫调度端，爬虫（URL管理器、网页下载器、网页解析器），价值数据。URL管理器用来管理待抓取URL集合和已抓取URL集合，防止重复抓取和循环抓取。网页下载器是将互联网上URL对应的网页下载到本地的工具。网页解析器是">
+  <meta name="description" content="用Python(3)开发轻量级爬虫，实现不需要登录的静态网页的抓取爬虫是什么？有什么价值？爬虫是一段自动抓取互联网信息的程序。将互联网数据，为我所用 简单爬虫架构由什么组成？爬虫调度端，爬虫（URL管理器、网页下载器、网页解析器），价值数据。URL管理器用来管理待抓取URL集合和已抓取URL集合，防止重复抓取和循环抓取。网页下载器是将互联网上URL对应的网页下载到本地的工具。网页解析器是从网页中提">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python爬虫">
 <meta property="og:url" content="http://csh012.com/2017/06/06/Python开发轻量级爬虫/index.html">
 <meta property="og:site_name" content="csh012">
-<meta property="og:description" content="用Python(3)开发轻量级爬虫，实现不需要登录的静态网页的抓取。爬虫是什么？有什么价值？ 爬虫是一段自动抓取互联网信息的程序。将互联网数据，为我所用。  简单爬虫架构由什么组成？ 爬虫调度端，爬虫（URL管理器、网页下载器、网页解析器），价值数据。URL管理器用来管理待抓取URL集合和已抓取URL集合，防止重复抓取和循环抓取。网页下载器是将互联网上URL对应的网页下载到本地的工具。网页解析器是">
-<meta property="og:updated_time" content="2017-06-09T12:40:36.419Z">
+<meta property="og:description" content="用Python(3)开发轻量级爬虫，实现不需要登录的静态网页的抓取爬虫是什么？有什么价值？爬虫是一段自动抓取互联网信息的程序。将互联网数据，为我所用 简单爬虫架构由什么组成？爬虫调度端，爬虫（URL管理器、网页下载器、网页解析器），价值数据。URL管理器用来管理待抓取URL集合和已抓取URL集合，防止重复抓取和循环抓取。网页下载器是将互联网上URL对应的网页下载到本地的工具。网页解析器是从网页中提">
+<meta property="og:updated_time" content="2017-06-09T16:06:34.046Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python爬虫">
-<meta name="twitter:description" content="用Python(3)开发轻量级爬虫，实现不需要登录的静态网页的抓取。爬虫是什么？有什么价值？ 爬虫是一段自动抓取互联网信息的程序。将互联网数据，为我所用。  简单爬虫架构由什么组成？ 爬虫调度端，爬虫（URL管理器、网页下载器、网页解析器），价值数据。URL管理器用来管理待抓取URL集合和已抓取URL集合，防止重复抓取和循环抓取。网页下载器是将互联网上URL对应的网页下载到本地的工具。网页解析器是">
+<meta name="twitter:description" content="用Python(3)开发轻量级爬虫，实现不需要登录的静态网页的抓取爬虫是什么？有什么价值？爬虫是一段自动抓取互联网信息的程序。将互联网数据，为我所用 简单爬虫架构由什么组成？爬虫调度端，爬虫（URL管理器、网页下载器、网页解析器），价值数据。URL管理器用来管理待抓取URL集合和已抓取URL集合，防止重复抓取和循环抓取。网页下载器是将互联网上URL对应的网页下载到本地的工具。网页解析器是从网页中提">
   
     <link rel="alternate" href="/atom.xml" title="csh012" type="application/atom+xml">
   
@@ -89,13 +89,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="用Python-3-开发轻量级爬虫，实现不需要登录的静态网页的抓取。"><a href="#用Python-3-开发轻量级爬虫，实现不需要登录的静态网页的抓取。" class="headerlink" title="用Python(3)开发轻量级爬虫，实现不需要登录的静态网页的抓取。"></a>用Python(3)开发轻量级爬虫，实现不需要登录的静态网页的抓取。</h2><h3 id="爬虫是什么？有什么价值？"><a href="#爬虫是什么？有什么价值？" class="headerlink" title="爬虫是什么？有什么价值？"></a>爬虫是什么？有什么价值？</h3><blockquote>
-<p>爬虫是一段自动抓取互联网信息的程序。将互联网数据，为我所用。</p>
-</blockquote>
-<h3 id="简单爬虫架构由什么组成？"><a href="#简单爬虫架构由什么组成？" class="headerlink" title="简单爬虫架构由什么组成？"></a>简单爬虫架构由什么组成？</h3><blockquote>
-<p>爬虫调度端，爬虫（<em>URL管理器</em>、<em>网页下载器</em>、<em>网页解析器</em>），价值数据。URL管理器用来管理待抓取URL集合和已抓取URL集合，防止重复抓取和循环抓取。网页下载器是将互联网上URL对应的网页下载到本地的工具。网页解析器是从网页中提取有价值数据的工具。</p>
+        <h2 id="用Python-3-开发轻量级爬虫，实现不需要登录的静态网页的抓取"><a href="#用Python-3-开发轻量级爬虫，实现不需要登录的静态网页的抓取" class="headerlink" title="用Python(3)开发轻量级爬虫，实现不需要登录的静态网页的抓取"></a>用Python(3)开发轻量级爬虫，实现不需要登录的静态网页的抓取</h2><h3 id="爬虫是什么？有什么价值？"><a href="#爬虫是什么？有什么价值？" class="headerlink" title="爬虫是什么？有什么价值？"></a>爬虫是什么？有什么价值？</h3><p>爬虫是一段自动抓取互联网信息的程序。将互联网数据，为我所用</p>
+<h3 id="简单爬虫架构由什么组成？"><a href="#简单爬虫架构由什么组成？" class="headerlink" title="简单爬虫架构由什么组成？"></a>简单爬虫架构由什么组成？</h3><p>爬虫调度端，爬虫（<em>URL管理器</em>、<em>网页下载器</em>、<em>网页解析器</em>），价值数据。URL管理器用来管理待抓取URL集合和已抓取URL集合，防止重复抓取和循环抓取。网页下载器是将互联网上URL对应的网页下载到本地的工具。网页解析器是从网页中提取有价值数据的工具。</p>
 <p>开发一个爬虫首先要确定目标（比如：百度百科python词条及相关词条页面的标题和简介），然后分析目标的<em>URL格式</em>、<em>数据格式</em>、<em>网页编码</em>，然后编写代码，最后执行爬虫。</p>
-</blockquote>
 <h3 id="下面是实例代码。"><a href="#下面是实例代码。" class="headerlink" title="下面是实例代码。"></a>下面是实例代码。</h3><h4 id="spider-main-py"><a href="#spider-main-py" class="headerlink" title="spider_main.py"></a>spider_main.py</h4><pre><code>from baike_spider import html_downloader
 from baike_spider import html_outputer
 from baike_spider import html_parser
@@ -249,7 +245,7 @@ class HtmlParser(object):
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://csh012.com/2017/06/06/Python开发轻量级爬虫/" data-id="cj3pu4jma000003mpivputjfi" class="article-share-link">Share</a>
+      <a data-url="http://csh012.com/2017/06/06/Python开发轻量级爬虫/" data-id="cj3q1q3i50000vumpxcpw3w8a" class="article-share-link">Share</a>
       
       
     </footer>
