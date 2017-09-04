@@ -335,7 +335,8 @@
       
         
           
-            <h1 id="httpbin"><a href="#httpbin" class="headerlink" title="httpbin"></a>httpbin</h1><p>在所有需要做HTTP请求的开发过程中，总有一个这样的痛点：我发出去的请求到底是什么样子的？特别是在一些需要签名和认证的场合，服务器只会冷冰冰的返回一个<code>40x</code>错误，你无从得知错误的具体详情。所以httpbin应运而生。</p>
+            <a id="more"></a>
+<h1 id="httpbin"><a href="#httpbin" class="headerlink" title="httpbin"></a>httpbin</h1><p>在所有需要做HTTP请求的开发过程中，总有一个这样的痛点：我发出去的请求到底是什么样子的？特别是在一些需要签名和认证的场合，服务器只会冷冰冰的返回一个<code>40x</code>错误，你无从得知错误的具体详情。所以httpbin应运而生。</p>
 <h2 id="httpbin是什么"><a href="#httpbin是什么" class="headerlink" title="httpbin是什么"></a>httpbin是什么</h2><p><strong>httpbin</strong>(<a href="http://httpbin.org/" target="_blank" rel="external">官网</a>|<a href="https://github.com/kennethreitz/httpbin" target="_blank" rel="external">github</a>)是一个HTTP Request &amp; Response Service，你可以向它发送请求，然后它会按照指定的规则将你的请求返回。<em>httpbin</em>支持HTTP/HTTPS，支持所有的HTTP动词，能模拟302跳转乃至302跳转的次数，还可以返回一个HTML文件或一个XML文件或一个图片文件（还支持指定返回图片的格式）。实在是请求调试中居家必备的良器！</p>
 <p>它的一些接口如下：</p>
 <table>
@@ -394,11 +395,14 @@
 </table>
 <h3 id="httpbin怎么用"><a href="#httpbin怎么用" class="headerlink" title="httpbin怎么用"></a>httpbin怎么用</h3><p><strong><a href="https://curl.haxx.se/" target="_blank" rel="external">cURL</a></strong>是一个利用URL语法在命令行下工作的文件传输工具，它支持文件上传和下载，所以是综合传输工具，但按传统，习惯称cURL为下载工具。cURL还包含了用于程序开发的libcurl。</p>
 <p>获取ip</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ curl http://httpbin.org/ip</div><div class="line">        &#123;</div><div class="line">          "origin": "39.170.144.131"</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl http://httpbin.org/ip</div></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"origin"</span>: <span class="string">"39.170.144.131"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>获取请求中的user-agent</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ curl http://httpbin.org/user-agent</div><div class="line">        &#123;</div><div class="line">          "user-agent": "curl/7.47.0"</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl http://httpbin.org/user-agent</div></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"user-agent"</span>: <span class="string">"curl/7.47.0"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>查看自己的GET请求</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ curl http://httpbin.org/get</div><div class="line">        &#123;</div><div class="line">          "args": &#123;&#125;, </div><div class="line">          "headers": &#123;</div><div class="line">            "Accept": "*/*", </div><div class="line">            "Connection": "close", </div><div class="line">            "Host": "httpbin.org", </div><div class="line">            "User-Agent": "curl/7.47.0"</div><div class="line">          &#125;, </div><div class="line">          "origin": "39.170.144.131", </div><div class="line">          "url": "http://httpbin.org/get"</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl http://httpbin.org/get</div></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"args"</span>: &#123;&#125;, </div><div class="line">  <span class="attr">"headers"</span>: &#123;</div><div class="line">    <span class="attr">"Accept"</span>: <span class="string">"*/*"</span>, </div><div class="line">    <span class="attr">"Connection"</span>: <span class="string">"close"</span>, </div><div class="line">    <span class="attr">"Host"</span>: <span class="string">"httpbin.org"</span>, </div><div class="line">    <span class="attr">"User-Agent"</span>: <span class="string">"curl/7.47.0"</span></div><div class="line">  &#125;, </div><div class="line">  <span class="attr">"origin"</span>: <span class="string">"39.170.144.131"</span>, </div><div class="line">  <span class="attr">"url"</span>: <span class="string">"http://httpbin.org/get"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="怎么安装和运行"><a href="#怎么安装和运行" class="headerlink" title="怎么安装和运行"></a>怎么安装和运行</h3><ol>
 <li>从PyPI安装并使用</li>
 </ol>
@@ -528,7 +532,8 @@
       
         
           
-            <p>使用Python(3)开发一个轻量级爬虫，实现不需要登录的静态网页的抓取。</p>
+            <a id="more"></a>
+<p>使用Python(3)开发一个轻量级爬虫，实现不需要登录的静态网页的抓取。</p>
 <h3 id="爬虫是什么？有什么价值？"><a href="#爬虫是什么？有什么价值？" class="headerlink" title="爬虫是什么？有什么价值？"></a>爬虫是什么？有什么价值？</h3><p>爬虫是一段自动抓取互联网信息的程序。将互联网数据，为我所用。</p>
 <h3 id="简单爬虫架构"><a href="#简单爬虫架构" class="headerlink" title="简单爬虫架构"></a>简单爬虫架构</h3><table>
 <thead>
