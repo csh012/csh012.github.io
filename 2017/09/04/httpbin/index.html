@@ -99,7 +99,7 @@
 <meta property="og:url" content="http://csh012.com/2017/09/04/httpbin/index.html">
 <meta property="og:site_name" content="csh012">
 <meta property="og:description" content="httpbin在所有需要做HTTP请求的开发过程中，总有一个这样的痛点：我发出去的请求到底是什么样子的？特别是在一些需要签名和认证的场合，服务器只会冷冰冰的返回一个40x错误，你无从得知错误的具体详情。所以httpbin应运而生。">
-<meta property="og:updated_time" content="2017-09-05T15:23:02.055Z">
+<meta property="og:updated_time" content="2017-09-06T15:01:12.309Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="httpbin">
 <meta name="twitter:description" content="httpbin在所有需要做HTTP请求的开发过程中，总有一个这样的痛点：我发出去的请求到底是什么样子的？特别是在一些需要签名和认证的场合，服务器只会冷冰冰的返回一个40x错误，你无从得知错误的具体详情。所以httpbin应运而生。">
@@ -412,7 +412,13 @@
 <li><code>/</code></li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@app.route('/')</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">view_landing_page</span><span class="params">()</span>:</span></div><div class="line">    <span class="string">"""Generates Landing Page."""</span></div><div class="line">    tracking_enabled = <span class="string">'HTTPBIN_TRACKING'</span> <span class="keyword">in</span> os.environ</div><div class="line"><span class="keyword">return</span> render_template(<span class="string">'index.html'</span>, tracking_enabled=tracking_enabled)</div></pre></td></tr></table></figure>
-
+<p>一般客户端发送请求给服务器，服务器再发送请求给 Flask 程序实例。程序实例要知道对每个 URL 运行哪些代码，所以保存了一个 URL 到 Python 函数的映射关系。处理 URL 到函数之间关系的程序叫路由。Flask 可以使用 app.route 修饰器，把修饰的函数注册成路由。如上，把 view_landing_page() 函数注册为程序根地址的处理程序。函数的返回值称为响应，是客户端接收到的内容，这里返回已经维护好的模板( index.html )。render_template 函数的作用是把 Jinja2 模板引擎集成到程序中，它的第一个参数是模板的文件名，随后的参数都是键值对，表示模板中变量对应的真实值。</p>
+<p>index.html：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;% include &apos;httpbin.1.html&apos; %&#125; # 需重复使用的模板代码片段可写入单独的文件，再包含在所有模板中</div><div class="line"></div><div class="line">&#123;% if tracking_enabled %&#125; # 条件控制语句</div><div class="line">	&#123;% include &apos;trackingscripts.html&apos; %&#125; # 使用trackingscripts.html跟踪脚本模板</div><div class="line">&#123;% endif %&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><code>/html</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@app.route(&apos;/html&apos;)</div><div class="line">def view_html_page():</div><div class="line">    &quot;&quot;&quot;Simple Html Page&quot;&quot;&quot;</div><div class="line"></div><div class="line">    return render_template(&apos;moby.html&apos;)</div></pre></td></tr></table></figure>
       
     </div>
 
