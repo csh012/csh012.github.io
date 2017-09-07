@@ -99,7 +99,7 @@
 <meta property="og:url" content="http://csh012.com/2017/09/04/httpbin/index.html">
 <meta property="og:site_name" content="csh012">
 <meta property="og:description" content="httpbin在所有需要做HTTP请求的开发过程中，总有一个这样的痛点：我发出去的请求到底是什么样子的？特别是在一些需要签名和认证的场合，服务器只会冷冰冰的返回一个40x错误，你无从得知错误的具体详情。所以httpbin应运而生。">
-<meta property="og:updated_time" content="2017-09-06T15:01:12.309Z">
+<meta property="og:updated_time" content="2017-09-07T15:47:05.492Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="httpbin">
 <meta name="twitter:description" content="httpbin在所有需要做HTTP请求的开发过程中，总有一个这样的痛点：我发出去的请求到底是什么样子的？特别是在一些需要签名和认证的场合，服务器只会冷冰冰的返回一个40x错误，你无从得知错误的具体详情。所以httpbin应运而生。">
@@ -332,69 +332,8 @@
       
         <h1 id="httpbin"><a href="#httpbin" class="headerlink" title="httpbin"></a>httpbin</h1><p>在所有需要做HTTP请求的开发过程中，总有一个这样的痛点：我发出去的请求到底是什么样子的？特别是在一些需要签名和认证的场合，服务器只会冷冰冰的返回一个<code>40x</code>错误，你无从得知错误的具体详情。所以httpbin应运而生。<a id="more"></a></p>
 <h2 id="httpbin是什么"><a href="#httpbin是什么" class="headerlink" title="httpbin是什么"></a>httpbin是什么</h2><p><strong>httpbin</strong>(<a href="http://httpbin.org/" target="_blank" rel="external">官网</a>|<a href="https://github.com/kennethreitz/httpbin" target="_blank" rel="external">github</a>)是一个HTTP Request &amp; Response Service，你可以向它发送请求，然后它会按照指定的规则将你的请求返回。<em>httpbin</em>支持HTTP/HTTPS，支持所有的HTTP动词，能模拟302跳转乃至302跳转的次数，还可以返回一个HTML文件或一个XML文件或一个图片文件（还支持指定返回图片的格式）。实在是请求调试中居家必备的良器！</p>
-<p>它的一些接口如下：</p>
-<table>
-<thead>
-<tr>
-<th>Endpoint</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="http://exhortation/" target="_blank" rel="external">/</a></td>
-<td>This page.</td>
-</tr>
-<tr>
-<td><a href="http://httpbin.org/ip" target="_blank" rel="external">/ip</a></td>
-<td>Returns Origin IP.</td>
-</tr>
-<tr>
-<td><a href="http://httpbin.org/uuid" target="_blank" rel="external">/uuid</a></td>
-<td>Returns UUID4</td>
-</tr>
-<tr>
-<td><a href="http://httpbin.org/user-agent" target="_blank" rel="external">/user-agent</a></td>
-<td>Returns user-agent.</td>
-</tr>
-<tr>
-<td><a href="http://httpbin.org/headers" target="_blank" rel="external">/headers</a></td>
-<td>Returns header dict.</td>
-</tr>
-<tr>
-<td><a href="http://httpbin.org/get" target="_blank" rel="external">/get</a></td>
-<td>Returns GET data.</td>
-</tr>
-<tr>
-<td>/post</td>
-<td>Returns POST data.</td>
-</tr>
-<tr>
-<td>/patch</td>
-<td>Returns PATCH data.</td>
-</tr>
-<tr>
-<td>/put</td>
-<td>Returns PUT data.</td>
-</tr>
-<tr>
-<td>/delete</td>
-<td>Returns DELETE data.</td>
-</tr>
-<tr>
-<td><a href="http://httpbin.org/" target="_blank" rel="external">…</a></td>
-<td><a href="http://httpbin.org/" target="_blank" rel="external">…</a></td>
-</tr>
-</tbody>
-</table>
 <h3 id="httpbin怎么用"><a href="#httpbin怎么用" class="headerlink" title="httpbin怎么用"></a>httpbin怎么用</h3><p>这里使用<strong><a href="https://curl.haxx.se/" target="_blank" rel="external">cURL</a></strong>工具，它是一个利用URL语法在命令行下工作的文件传输工具，它支持文件上传和下载，所以是综合传输工具，但按传统，习惯称cURL为下载工具。cURL还包含了用于程序开发的libcurl。</p>
-<p>用法：<code>curl http://httpbin.org</code>查看网页源码，<code>curl -o httpbin http://httpbin.org</code>将网页保存并命名为httpbin，使用<code>-L</code>参数curl就会跳转到新的网址，使用<code>-i</code>参数可以显示响应头信息，使用<code>-V</code>参数可以显示一次http通信的整个过程。比如：</p>
-<p>查看GET请求</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl http://httpbin.org/get</div></pre></td></tr></table></figure>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"args"</span>: &#123;&#125;, </div><div class="line">  <span class="attr">"headers"</span>: &#123;</div><div class="line">    <span class="attr">"Accept"</span>: <span class="string">"*/*"</span>, </div><div class="line">    <span class="attr">"Connection"</span>: <span class="string">"close"</span>, </div><div class="line">    <span class="attr">"Host"</span>: <span class="string">"httpbin.org"</span>, </div><div class="line">    <span class="attr">"User-Agent"</span>: <span class="string">"curl/7.47.0"</span></div><div class="line">  &#125;, </div><div class="line">  <span class="attr">"origin"</span>: <span class="string">"39.170.144.131"</span>, </div><div class="line">  <span class="attr">"url"</span>: <span class="string">"http://httpbin.org/get"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>发送POST请求</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl -X POST http://httpbin.org/post</div></pre></td></tr></table></figure>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"args"</span>: &#123;&#125;, </div><div class="line">  <span class="attr">"data"</span>: <span class="string">""</span>, </div><div class="line">  <span class="attr">"files"</span>: &#123;&#125;, </div><div class="line">  <span class="attr">"form"</span>: &#123;&#125;, </div><div class="line">  <span class="attr">"headers"</span>: &#123;</div><div class="line">    <span class="attr">"Accept"</span>: <span class="string">"*/*"</span>, </div><div class="line">    <span class="attr">"Connection"</span>: <span class="string">"close"</span>, </div><div class="line">    <span class="attr">"Content-Length"</span>: <span class="string">"0"</span>, </div><div class="line">    <span class="attr">"Host"</span>: <span class="string">"httpbin.org"</span>, </div><div class="line">    <span class="attr">"User-Agent"</span>: <span class="string">"curl/7.47.0"</span></div><div class="line">  &#125;, </div><div class="line">  <span class="attr">"json"</span>: <span class="literal">null</span>, </div><div class="line">  <span class="attr">"origin"</span>: <span class="string">"39.170.148.117"</span>, </div><div class="line">  <span class="attr">"url"</span>: <span class="string">"http://httpbin.org/post"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>用法：<code>curl http://httpbin.org</code>查看网页源码，<code>curl -o httpbin http://httpbin.org</code>将网页保存并命名为httpbin，使用<code>-L</code>参数curl就会跳转到新的网址，使用<code>-i</code>参数可以显示响应头信息，使用<code>-V</code>参数可以显示一次http通信的整个过程。</p>
 <h3 id="怎么安装和运行"><a href="#怎么安装和运行" class="headerlink" title="怎么安装和运行"></a>怎么安装和运行</h3><ul>
 <li>从PyPI安装并使用</li>
 </ul>
@@ -408,17 +347,23 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo docker run -dt -p 18080:8080 kennethreitz/httpbin</div></pre></td></tr></table></figure>
 <p>其中<code>-d</code>是后台运行容器并返回容器ID，<code>-t</code>为容器重新分配一个伪输入终端。当利用<code>docker run</code>来创建容器时，Docker会检查本地是否存在指定的镜像，不存在就从公有仓库下载，利用镜像创建并启动一个容器。</p>
-<h2 id="代码部分"><a href="#代码部分" class="headerlink" title="代码部分"></a>代码部分</h2><ul>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><ul>
 <li><code>/</code></li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl http://127.0.0.1:8000</div></pre></td></tr></table></figure>
+<p>运行这条命令，客户端会把请求发送给Web服务器，Web服务器再把请求发送给Flask程序实例，程序执行特定的函数，返回特定的值。下面的代码实现了这一过程。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@app.route('/')</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">view_landing_page</span><span class="params">()</span>:</span></div><div class="line">    <span class="string">"""Generates Landing Page."""</span></div><div class="line">    tracking_enabled = <span class="string">'HTTPBIN_TRACKING'</span> <span class="keyword">in</span> os.environ</div><div class="line"><span class="keyword">return</span> render_template(<span class="string">'index.html'</span>, tracking_enabled=tracking_enabled)</div></pre></td></tr></table></figure>
-<p>一般客户端发送请求给服务器，服务器再发送请求给 Flask 程序实例。程序实例要知道对每个 URL 运行哪些代码，所以保存了一个 URL 到 Python 函数的映射关系。处理 URL 到函数之间关系的程序叫路由。Flask 可以使用 app.route 修饰器，把修饰的函数注册成路由。如上，把 view_landing_page() 函数注册为程序根地址的处理程序。函数的返回值称为响应，是客户端接收到的内容，这里返回已经维护好的模板( index.html )。render_template 函数的作用是把 Jinja2 模板引擎集成到程序中，它的第一个参数是模板的文件名，随后的参数都是键值对，表示模板中变量对应的真实值。</p>
-<p>index.html：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;% include &apos;httpbin.1.html&apos; %&#125; # 需重复使用的模板代码片段可写入单独的文件，再包含在所有模板中</div><div class="line"></div><div class="line">&#123;% if tracking_enabled %&#125; # 条件控制语句</div><div class="line">	&#123;% include &apos;trackingscripts.html&apos; %&#125; # 使用trackingscripts.html跟踪脚本模板</div><div class="line">&#123;% endif %&#125;</div></pre></td></tr></table></figure>
+<p>这里使用app.route修饰器定义路由（处理URL请求和函数之间关系的程序称为路由），把view_landing_page()函数注册成程序根地址的处理程序，即上面的过程执行的是view_landing_page()函数，该函数的返回值是render_template函数的结果。render_template函数会把Jinja2模板引擎集成到程序中，它的第一个参数是模板的文件名，随后的参数都是键值对，表示模板中变量对应的真实值。</p>
+<p>模板index.html：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;% include <span class="string">'httpbin.1.html'</span> %&#125; <span class="comment"># 需重复使用的模板代码片段可写入单独的文件，再包含在所有模板中</span></div><div class="line"></div><div class="line">&#123;% <span class="keyword">if</span> tracking_enabled %&#125; <span class="comment"># 条件控制语句</span></div><div class="line">	&#123;% include <span class="string">'trackingscripts.html'</span> %&#125; <span class="comment"># 条件成立时包含trackingscripts.html跟踪脚本模板</span></div><div class="line">&#123;% endif %&#125;</div></pre></td></tr></table></figure>
 <ul>
-<li><code>/html</code></li>
+<li><code>/ip</code> 返回客户端的IP</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@app.route(&apos;/html&apos;)</div><div class="line">def view_html_page():</div><div class="line">    &quot;&quot;&quot;Simple Html Page&quot;&quot;&quot;</div><div class="line"></div><div class="line">    return render_template(&apos;moby.html&apos;)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl http://127.0.0.1:8000/ip</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&quot;origin&quot;: &quot;127.0.0.1&quot;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@app.route('/ip')</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">view_origin</span><span class="params">()</span>:</span></div><div class="line">    <span class="string">"""Returns Origin IP."""</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> jsonify(origin=request.headers.get(<span class="string">'X-Forwarded-For'</span>, request.remote_addr))</div></pre></td></tr></table></figure>
+<p>使用修饰器把 view_origin() 函数注册成 <code>/ip</code> 的处理程序，返回 jsonify 函数的结果。该函数会把数据转换为 json 格式，并声明数据是 json 格式。request.remote_addr</p>
+
       
     </div>
 
@@ -580,7 +525,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#httpbin"><span class="nav-number">1.</span> <span class="nav-text">httpbin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#httpbin是什么"><span class="nav-number">1.1.</span> <span class="nav-text">httpbin是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#httpbin怎么用"><span class="nav-number">1.1.1.</span> <span class="nav-text">httpbin怎么用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#怎么安装和运行"><span class="nav-number">1.1.2.</span> <span class="nav-text">怎么安装和运行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码部分"><span class="nav-number">1.2.</span> <span class="nav-text">代码部分</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#httpbin"><span class="nav-number">1.</span> <span class="nav-text">httpbin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#httpbin是什么"><span class="nav-number">1.1.</span> <span class="nav-text">httpbin是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#httpbin怎么用"><span class="nav-number">1.1.1.</span> <span class="nav-text">httpbin怎么用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#怎么安装和运行"><span class="nav-number">1.1.2.</span> <span class="nav-text">怎么安装和运行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口"><span class="nav-number">1.2.</span> <span class="nav-text">接口</span></a></li></ol></li></ol></div>
             
 
           </div>
