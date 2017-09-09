@@ -93,16 +93,16 @@
 
 
 
-<meta name="description" content="httpbin在所有需要做HTTP请求的开发过程中，总有一个这样的痛点：我发出去的请求到底是什么样子的？特别是在一些需要签名和认证的场合，服务器只会冷冰冰的返回一个40x错误，你无从得知错误的具体详情。所以httpbin应运而生。">
+<meta name="description" content="在所有需要做HTTP请求的开发过程中，总有一个这样的痛点：我发出去的请求到底是什么样子的？特别是在一些需要签名和认证的场合，服务器只会冷冰冰的返回一个40x错误，你无从得知错误的具体详情。所以httpbin应运而生。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="httpbin">
 <meta property="og:url" content="http://csh012.com/2017/09/04/httpbin/index.html">
 <meta property="og:site_name" content="csh012">
-<meta property="og:description" content="httpbin在所有需要做HTTP请求的开发过程中，总有一个这样的痛点：我发出去的请求到底是什么样子的？特别是在一些需要签名和认证的场合，服务器只会冷冰冰的返回一个40x错误，你无从得知错误的具体详情。所以httpbin应运而生。">
-<meta property="og:updated_time" content="2017-09-07T15:47:05.492Z">
+<meta property="og:description" content="在所有需要做HTTP请求的开发过程中，总有一个这样的痛点：我发出去的请求到底是什么样子的？特别是在一些需要签名和认证的场合，服务器只会冷冰冰的返回一个40x错误，你无从得知错误的具体详情。所以httpbin应运而生。">
+<meta property="og:updated_time" content="2017-09-09T16:46:09.668Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="httpbin">
-<meta name="twitter:description" content="httpbin在所有需要做HTTP请求的开发过程中，总有一个这样的痛点：我发出去的请求到底是什么样子的？特别是在一些需要签名和认证的场合，服务器只会冷冰冰的返回一个40x错误，你无从得知错误的具体详情。所以httpbin应运而生。">
+<meta name="twitter:description" content="在所有需要做HTTP请求的开发过程中，总有一个这样的痛点：我发出去的请求到底是什么样子的？特别是在一些需要签名和认证的场合，服务器只会冷冰冰的返回一个40x错误，你无从得知错误的具体详情。所以httpbin应运而生。">
 
 
 
@@ -330,40 +330,92 @@
       
 
       
-        <h1 id="httpbin"><a href="#httpbin" class="headerlink" title="httpbin"></a>httpbin</h1><p>在所有需要做HTTP请求的开发过程中，总有一个这样的痛点：我发出去的请求到底是什么样子的？特别是在一些需要签名和认证的场合，服务器只会冷冰冰的返回一个<code>40x</code>错误，你无从得知错误的具体详情。所以httpbin应运而生。<a id="more"></a></p>
+        <p>在所有需要做HTTP请求的开发过程中，总有一个这样的痛点：我发出去的请求到底是什么样子的？特别是在一些需要签名和认证的场合，服务器只会冷冰冰的返回一个<code>40x</code>错误，你无从得知错误的具体详情。所以httpbin应运而生。<a id="more"></a></p>
 <h2 id="httpbin是什么"><a href="#httpbin是什么" class="headerlink" title="httpbin是什么"></a>httpbin是什么</h2><p><strong>httpbin</strong>(<a href="http://httpbin.org/" target="_blank" rel="external">官网</a>|<a href="https://github.com/kennethreitz/httpbin" target="_blank" rel="external">github</a>)是一个HTTP Request &amp; Response Service，你可以向它发送请求，然后它会按照指定的规则将你的请求返回。<em>httpbin</em>支持HTTP/HTTPS，支持所有的HTTP动词，能模拟302跳转乃至302跳转的次数，还可以返回一个HTML文件或一个XML文件或一个图片文件（还支持指定返回图片的格式）。实在是请求调试中居家必备的良器！</p>
 <h3 id="httpbin怎么用"><a href="#httpbin怎么用" class="headerlink" title="httpbin怎么用"></a>httpbin怎么用</h3><p>这里使用<strong><a href="https://curl.haxx.se/" target="_blank" rel="external">cURL</a></strong>工具，它是一个利用URL语法在命令行下工作的文件传输工具，它支持文件上传和下载，所以是综合传输工具，但按传统，习惯称cURL为下载工具。cURL还包含了用于程序开发的libcurl。</p>
 <p>用法：<code>curl http://httpbin.org</code>查看网页源码，<code>curl -o httpbin http://httpbin.org</code>将网页保存并命名为httpbin，使用<code>-L</code>参数curl就会跳转到新的网址，使用<code>-i</code>参数可以显示响应头信息，使用<code>-V</code>参数可以显示一次http通信的整个过程。</p>
 <h3 id="怎么安装和运行"><a href="#怎么安装和运行" class="headerlink" title="怎么安装和运行"></a>怎么安装和运行</h3><ul>
 <li>从PyPI安装并使用</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ pip install httpbin gunicorn</div><div class="line">$ gunicorn httpbin:app</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pip install httpbin gunicorn</div><div class="line">gunicorn httpbin:app</div></pre></td></tr></table></figure>
 <ul>
 <li>从源码安装</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ git clone https://github.com/kennethreitz/httpbin</div><div class="line">$ pip install -e httpbin</div><div class="line">$ python -m httpbin.core [--port=PORT] [--host=HOST]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/kennethreitz/httpbin</div><div class="line">pip install -e httpbin</div><div class="line">python -m httpbin.core [--port=PORT] [--host=HOST]</div></pre></td></tr></table></figure>
 <ul>
 <li>使用docker</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo docker run -dt -p 18080:8080 kennethreitz/httpbin</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo docker run -dt -p 18080:8080 kennethreitz/httpbin</div></pre></td></tr></table></figure>
 <p>其中<code>-d</code>是后台运行容器并返回容器ID，<code>-t</code>为容器重新分配一个伪输入终端。当利用<code>docker run</code>来创建容器时，Docker会检查本地是否存在指定的镜像，不存在就从公有仓库下载，利用镜像创建并启动一个容器。</p>
-<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><ul>
-<li><code>/</code></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl http://127.0.0.1:8000</div></pre></td></tr></table></figure>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><h3 id=""><a href="#" class="headerlink" title="/"></a>/</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl http://127.0.0.1:8000</div></pre></td></tr></table></figure>
 <p>运行这条命令，客户端会把请求发送给Web服务器，Web服务器再把请求发送给Flask程序实例，程序执行特定的函数，返回特定的值。下面的代码实现了这一过程。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@app.route('/')</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">view_landing_page</span><span class="params">()</span>:</span></div><div class="line">    <span class="string">"""Generates Landing Page."""</span></div><div class="line">    tracking_enabled = <span class="string">'HTTPBIN_TRACKING'</span> <span class="keyword">in</span> os.environ</div><div class="line"><span class="keyword">return</span> render_template(<span class="string">'index.html'</span>, tracking_enabled=tracking_enabled)</div></pre></td></tr></table></figure>
 <p>这里使用app.route修饰器定义路由（处理URL请求和函数之间关系的程序称为路由），把view_landing_page()函数注册成程序根地址的处理程序，即上面的过程执行的是view_landing_page()函数，该函数的返回值是render_template函数的结果。render_template函数会把Jinja2模板引擎集成到程序中，它的第一个参数是模板的文件名，随后的参数都是键值对，表示模板中变量对应的真实值。</p>
 <p>模板index.html：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;% include <span class="string">'httpbin.1.html'</span> %&#125; <span class="comment"># 需重复使用的模板代码片段可写入单独的文件，再包含在所有模板中</span></div><div class="line"></div><div class="line">&#123;% <span class="keyword">if</span> tracking_enabled %&#125; <span class="comment"># 条件控制语句</span></div><div class="line">	&#123;% include <span class="string">'trackingscripts.html'</span> %&#125; <span class="comment"># 条件成立时包含trackingscripts.html跟踪脚本模板</span></div><div class="line">&#123;% endif %&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li><code>/ip</code> 返回客户端的IP</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl http://127.0.0.1:8000/ip</div></pre></td></tr></table></figure>
+<h3 id="ip"><a href="#ip" class="headerlink" title="/ip"></a>/ip</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl http://127.0.0.1:5000/ip</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&quot;origin&quot;: &quot;127.0.0.1&quot;&#125;</div></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@app.route('/ip')</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">view_origin</span><span class="params">()</span>:</span></div><div class="line">    <span class="string">"""Returns Origin IP."""</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> jsonify(origin=request.headers.get(<span class="string">'X-Forwarded-For'</span>, request.remote_addr))</div></pre></td></tr></table></figure>
-<p>使用修饰器把 view_origin() 函数注册成 <code>/ip</code> 的处理程序，返回 jsonify 函数的结果。该函数会把数据转换为 json 格式，并声明数据是 json 格式。request.remote_addr</p>
-
+<p>使用修饰器把 view_origin() 函数注册成 <code>/ip</code> 的处理程序，返回 jsonify 函数的结果。该函数会把数据转换为 json 格式，并声明数据是 json 格式。request.remote_addr能获取请求用户的IP。</p>
+<h3 id="uuid"><a href="#uuid" class="headerlink" title="/uuid"></a>/uuid</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl http://127.0.0.1:5000/uuid</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&quot;uuid&quot;: &quot;81cf3018-1be2-4629-acdc-d942836784c0&quot;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@app.route('/uuid')</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">view_uuid</span><span class="params">()</span>:</span></div><div class="line">    <span class="string">"""Returns a UUID."""</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> jsonify(uuid=str(uuid.uuid4()))</div></pre></td></tr></table></figure>
+<p>UUID：通用唯一识别码，是一种软件建构标准，亦是开放软件基金会组织在分布式计算环境领域的一部分。</p>
+<h3 id="user-agent"><a href="#user-agent" class="headerlink" title="/user-agent"></a>/user-agent</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl http://127.0.0.1:5000/user-agent</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&quot;user-agent&quot;: &quot;curl/7.47.0&quot;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@app.route('/user-agent')</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">view_user_agent</span><span class="params">()</span>:</span></div><div class="line">    <span class="string">"""Returns User-Agent."""</span></div><div class="line"></div><div class="line">    headers = get_headers()</div><div class="line"></div><div class="line">    <span class="keyword">return</span> jsonify(&#123;<span class="string">'user-agent'</span>: headers[<span class="string">'user-agent'</span>]&#125;)</div></pre></td></tr></table></figure>
+<p>User-agent指的是代表用户行为的软件（软件代理程序）所提供的对自己的一个标识符。当一个软件在一个网络协议进行操作时，它通常向它的operating peer提交一个特定的字符串来标示自己，该字符串通常包含了其应用程序类型、操作系统、软件供应商……等等，有时还会包含软件修订版本等信息。在HTTP、SIP以及SMTP/NNTP协议中，这个识别是通过user-agent的头字段传送的。</p>
+<p>在浏览器大战期间，很多网络服务器的配置只给被识别为某些版本的Mozilla的客户端发送需要高级功能的网页。因此，绝大多数网页浏览器使用的User-Agent值如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Mozilla/[version] ([system and browser information]) [platform] ([platform details]) [extensions]</div></pre></td></tr></table></figure>
+<p>【伪装成Mozilla排版引擎的浏览器以达到兼容】【浏览器所运行的系统的详细信息】【浏览器所使用的平台】【浏览器平台的细节】【被浏览器用于指示特定的直接由浏览器提供或者通过第三方提供的可用的增强功能】</p>
+<h3 id="headers"><a href="#headers" class="headerlink" title="/headers"></a>/headers</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl http://127.0.0.1:5000/headers</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;headers&quot;: &#123;</div><div class="line">    &quot;Accept&quot;: &quot;*/*&quot;, </div><div class="line">    &quot;Host&quot;: &quot;127.0.0.1:5000&quot;, </div><div class="line">    &quot;User-Agent&quot;: &quot;curl/7.47.0&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@app.route('/headers')</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">view_headers</span><span class="params">()</span>:</span></div><div class="line">    <span class="string">"""Returns HTTP HEADERS."""</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> jsonify(get_dict(<span class="string">'headers'</span>))</div></pre></td></tr></table></figure>
+<p>HTTP Headers是HTTP请求和响应的核心，它承载了关于客户端浏览器，请求页面，服务器等相关的信息。</p>
+<table>
+<thead>
+<tr>
+<th>一些常见的HTTP请求信息</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Host</td>
+<td style="text-align:left">服务器的域名，以及服务器所监听的传输控制协议端口号。如果所请求的端口是对应的服务的标准端口，则端口号可被省略。</td>
+</tr>
+<tr>
+<td>User-Agent</td>
+<td style="text-align:left">浏览器的身份标识字符串</td>
+</tr>
+<tr>
+<td>Accept-Language</td>
+<td style="text-align:left">这个信息可以说明用户的默认语言设置。如果网站有不同的语言版本，那么就可以通过这个信息来重定向用户的浏览器。它可以通过逗号分割来携带多国语言。第一个会是首选的语言，其它语言会携带一个“q”值，来表示用户对该语言的喜好程度（0~1）。</td>
+</tr>
+<tr>
+<td>Accept-Encoding</td>
+<td style="text-align:left">能够接受的编码方式列表。大部分的现代浏览器都支持gzip压缩，并会把这一信息报告给服务器，这时服务器就会将压缩过的HTML发送给浏览器。这可以减少近80%的文件大小，以节省下载时间和带宽</td>
+</tr>
+<tr>
+<td>If-Modified-Since</td>
+<td style="text-align:left">如果一个页面已经在你的浏览器中被缓存，那么你下次浏览时浏览器将会检测文档是否被修改过，那么它就会发送这样的头部：If-Modified-Since: Sat, 28 Aug 2017 06:38:19 GMT如果自从这个时间以来未被修改过，那么服务器将会返回“304 Not Modified”，而且不会再返回内容。浏览器将自动去缓存中读取内容</td>
+</tr>
+<tr>
+<td>Cookie</td>
+<td style="text-align:left">发送浏览器中存储的Cookie信息给服务器，它是用分号分割的一组键值对值对。Cookie也可以包含session id</td>
+</tr>
+<tr>
+<td>Referer</td>
+<td style="text-align:left">表示浏览器所访问的前一个页面，正是那个页面上的某个链接将浏览器带到了当前所请求的这个页面</td>
+</tr>
+</tbody>
+</table>
+<h3 id="get"><a href="#get" class="headerlink" title="/get"></a>/get</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl http://127.0.0.1:5000/get</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;args&quot;: &#123;&#125;, </div><div class="line">  &quot;headers&quot;: &#123;</div><div class="line">    &quot;Accept&quot;: &quot;*/*&quot;, </div><div class="line">    &quot;Host&quot;: &quot;127.0.0.1:5000&quot;, </div><div class="line">    &quot;User-Agent&quot;: &quot;curl/7.47.0&quot;</div><div class="line">  &#125;, </div><div class="line">  &quot;origin&quot;: &quot;127.0.0.1&quot;, </div><div class="line">  &quot;url&quot;: &quot;http://127.0.0.1:5000/get&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@app.route('/get', methods=('GET',))</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">view_get</span><span class="params">()</span>:</span></div><div class="line">    <span class="string">"""Returns GET Data."""</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> jsonify(get_dict(<span class="string">'url'</span>, <span class="string">'args'</span>, <span class="string">'headers'</span>, <span class="string">'origin'</span>))</div></pre></td></tr></table></figure>
+<p>返回GET请求对应的url、args、headers、headers等信息。get_dict 函数的代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_dict</span><span class="params">(*keys, **extras)</span>:</span></div><div class="line">    <span class="string">"""Returns request dict of given keys."""</span></div><div class="line"></div><div class="line">    _keys = (<span class="string">'url'</span>, <span class="string">'args'</span>, <span class="string">'form'</span>, <span class="string">'data'</span>, <span class="string">'origin'</span>, <span class="string">'headers'</span>, <span class="string">'files'</span>, <span class="string">'json'</span>, <span class="string">'method'</span>)</div><div class="line"></div><div class="line">    <span class="keyword">assert</span> all(map(_keys.__contains__, keys))</div><div class="line">    data = request.data</div><div class="line">    form = semiflatten(request.form)</div><div class="line"></div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        _json = json.loads(data.decode(<span class="string">'utf-8'</span>))</div><div class="line">    <span class="keyword">except</span> (ValueError, TypeError):</div><div class="line">        _json = <span class="keyword">None</span></div><div class="line"></div><div class="line">    d = dict(</div><div class="line">        url=get_url(request),</div><div class="line">        args=semiflatten(request.args),</div><div class="line">        form=form,</div><div class="line">        data=json_safe(data),</div><div class="line">        origin=request.headers.get(<span class="string">'X-Forwarded-For'</span>, request.remote_addr),</div><div class="line">        headers=get_headers(),</div><div class="line">        files=get_files(),</div><div class="line">        json=_json,</div><div class="line">        method=request.method,</div><div class="line">    )</div><div class="line"></div><div class="line">    out_d = dict()</div><div class="line"></div><div class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> keys:</div><div class="line">        out_d[key] = d.get(key)</div><div class="line"></div><div class="line">    out_d.update(extras)</div><div class="line"></div><div class="line">    <span class="keyword">return</span> out_d</div></pre></td></tr></table></figure>
+<h3 id="post"><a href="#post" class="headerlink" title="/post"></a>/post</h3><h3 id="patch"><a href="#patch" class="headerlink" title="/patch"></a>/patch</h3><h3 id="put"><a href="#put" class="headerlink" title="/put"></a>/put</h3><h3 id="delete"><a href="#delete" class="headerlink" title="/delete"></a>/delete</h3>
       
     </div>
 
@@ -525,7 +577,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#httpbin"><span class="nav-number">1.</span> <span class="nav-text">httpbin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#httpbin是什么"><span class="nav-number">1.1.</span> <span class="nav-text">httpbin是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#httpbin怎么用"><span class="nav-number">1.1.1.</span> <span class="nav-text">httpbin怎么用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#怎么安装和运行"><span class="nav-number">1.1.2.</span> <span class="nav-text">怎么安装和运行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口"><span class="nav-number">1.2.</span> <span class="nav-text">接口</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#httpbin是什么"><span class="nav-number">1.</span> <span class="nav-text">httpbin是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#httpbin怎么用"><span class="nav-number">1.1.</span> <span class="nav-text">httpbin怎么用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#怎么安装和运行"><span class="nav-number">1.2.</span> <span class="nav-text">怎么安装和运行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口"><span class="nav-number">2.</span> <span class="nav-text">接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">2.1.</span> <span class="nav-text">/</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ip"><span class="nav-number">2.2.</span> <span class="nav-text">/ip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#uuid"><span class="nav-number">2.3.</span> <span class="nav-text">/uuid</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#user-agent"><span class="nav-number">2.4.</span> <span class="nav-text">/user-agent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#headers"><span class="nav-number">2.5.</span> <span class="nav-text">/headers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#get"><span class="nav-number">2.6.</span> <span class="nav-text">/get</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#post"><span class="nav-number">2.7.</span> <span class="nav-text">/post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#patch"><span class="nav-number">2.8.</span> <span class="nav-text">/patch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#put"><span class="nav-number">2.9.</span> <span class="nav-text">/put</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete"><span class="nav-number">2.10.</span> <span class="nav-text">/delete</span></a></li></ol></li></ol></div>
             
 
           </div>
