@@ -95,13 +95,13 @@
 
 <meta name="description" content="在所有需要做HTTP请求的开发过程中，总有一个这样的痛点：我发出去的请求到底是什么样子的？特别是在一些需要签名和认证的场合，服务器只会冷冰冰的返回一个40x错误，你无从得知错误的具体详情。所以httpbin应运而生。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="httpbin">
+<meta property="og:title" content="csh012">
 <meta property="og:url" content="http://csh012.com/2017/09/04/httpbin/index.html">
 <meta property="og:site_name" content="csh012">
 <meta property="og:description" content="在所有需要做HTTP请求的开发过程中，总有一个这样的痛点：我发出去的请求到底是什么样子的？特别是在一些需要签名和认证的场合，服务器只会冷冰冰的返回一个40x错误，你无从得知错误的具体详情。所以httpbin应运而生。">
-<meta property="og:updated_time" content="2017-09-11T15:33:24.484Z">
+<meta property="og:updated_time" content="2017-09-13T14:37:59.759Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="httpbin">
+<meta name="twitter:title" content="csh012">
 <meta name="twitter:description" content="在所有需要做HTTP请求的开发过程中，总有一个这样的痛点：我发出去的请求到底是什么样子的？特别是在一些需要签名和认证的场合，服务器只会冷冰冰的返回一个40x错误，你无从得知错误的具体详情。所以httpbin应运而生。">
 
 
@@ -136,7 +136,7 @@
 
 
 
-  <title>httpbin | csh012</title>
+  <title> | csh012</title>
   
 
 
@@ -272,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">httpbin</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -425,8 +425,262 @@
 <h3 id="anything-anything-anything"><a href="#anything-anything-anything" class="headerlink" title="/anything    /anything/:anything"></a>/anything    /anything/:anything</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@app.route('/anything', methods=['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'TRACE'])</span></div><div class="line"><span class="meta">@app.route('/anything/&lt;path:anything&gt;', methods=['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'TRACE'])</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">view_anything</span><span class="params">(anything=None)</span>:</span></div><div class="line">    <span class="string">"""Returns request data."""</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> jsonify(get_dict(<span class="string">'url'</span>, <span class="string">'args'</span>, <span class="string">'headers'</span>, <span class="string">'origin'</span>, <span class="string">'method'</span>, <span class="string">'form'</span>, <span class="string">'data'</span>, <span class="string">'files'</span>, <span class="string">'json'</span>))</div></pre></td></tr></table></figure>
 <h3 id="encoding-utf8"><a href="#encoding-utf8" class="headerlink" title="/encoding/utf8"></a>/encoding/utf8</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl http://127.0.0.1:5000/encoding/utf8</div></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@app.route('/encoding/utf8')</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">encoding</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">return</span> render_template(<span class="string">'UTF-8-demo.txt'</span>)</div></pre></td></tr></table></figure>
-<p>url <code>/encoding/utf8</code> ，返回渲染模板 UTF-8-demo.txt 的结果。</p>
-<h3 id="gzip"><a href="#gzip" class="headerlink" title="/gzip"></a>/gzip</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@app.route('/gzip')</span></div><div class="line"><span class="meta">@filters.gzip</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">view_gzip_encoded_content</span><span class="params">()</span>:</span></div><div class="line">    <span class="string">"""Returns GZip-Encoded Data."""</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> jsonify(get_dict(</div><div class="line">        <span class="string">'origin'</span>, <span class="string">'headers'</span>, method=request.method, gzipped=<span class="keyword">True</span>))</div></pre></td></tr></table></figure>
+<p>URL<code>coding/utf8</code> ，返回渲染模板 UTF-8-demo.txt 的结果。</p>
+<h3 id="gzip"><a href="#gzip" class="headerlink" title="gzip"></a>gzip</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@app.route('/gzip')</span></div><div class="line"><span class="meta">@filters.gzip</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">view_gzip_encoded_content</span><span class="params">()</span>:</span></div><div class="line">    <span class="string">"""Returns GZip-Encoded Data."""</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> jsonify(get_dict(</div><div class="line">        <span class="string">'origin'</span>, <span class="string">'headers'</span>, method=request.method, gzipped=<span class="keyword">True</span>))</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@decorator # 把函数注册成修饰器</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">gzip</span><span class="params">(f, *args, **kwargs)</span>:</span></div><div class="line">    <span class="string">"""GZip Flask Response Decorator."""</span></div><div class="line"></div><div class="line">    data = f(*args, **kwargs)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> isinstance(data, Response):　<span class="comment"># 判断变量类型</span></div><div class="line">        content = data.data</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        content = data</div><div class="line"></div><div class="line">    gzip_buffer = BytesIO()</div><div class="line">    gzip_file = gzip2.GzipFile(</div><div class="line">        mode=<span class="string">'wb'</span>,</div><div class="line">        compresslevel=<span class="number">4</span>,</div><div class="line">        fileobj=gzip_buffer</div><div class="line">    )</div><div class="line">    gzip_file.write(content)</div><div class="line">    gzip_file.close()</div><div class="line"></div><div class="line">    gzip_data = gzip_buffer.getvalue()</div><div class="line"></div><div class="line">    <span class="keyword">if</span> isinstance(data, Response):</div><div class="line">        data.data = gzip_data</div><div class="line">        data.headers[<span class="string">'Content-Encoding'</span>] = <span class="string">'gzip'</span></div><div class="line">        data.headers[<span class="string">'Content-Length'</span>] = str(len(data.data))</div><div class="line"></div><div class="line">        <span class="keyword">return</span> data</div><div class="line"></div><div class="line">    <span class="keyword">return</span> gzip_data</div></pre></td></tr></table></figure>
+<h3 id="deflate"><a href="#deflate" class="headerlink" title="/deflate"></a>/deflate</h3><p>HTTP定义了一种机制，一个Web客户机和Web服务器同意一压缩方案可以用来发送内容。这是使用接受编码和内容编码标头完成。有两种常用的HTTP压缩：DEFLATE和GZIP。DEFLATE是一个无专利的压缩算法，它可以实现无损数据压缩，有众多开源的实现算法。GZIP是使用DEFLATE进行压缩数据的另一个压缩库。然而根据有关GZip和Deflate的资料说明，Deflate只是一种过时的网页压缩，现在浏览器对其支持并不好，所以最好禁用deflate压缩，而使用gzip。</p>
+<h3 id="brotli"><a href="#brotli" class="headerlink" title="/brotli"></a>/brotli</h3><p>Brotli最初发布于2015年，用于网络字体的离线压缩。Google软件工程师在2015年9月发布了包含通用无损数据压缩的Brotli增强版本，特别侧重于HTTP压缩。其中的编码器被部分改写以提高压缩比，编码器和解码器都提高了速度，流式API已被改进，增加更多压缩质量级别。新版本还展现了跨平台的性能改进，以及减少解码所需的内存。<br>与常见的通用压缩算法不同，Brotli使用一个预定义的120千字节字典。该字典包含超过13000个常用单词、短语和其他子字符串，这些来自一个文本和HTML文档的大型语料库。预定义的算法可以提升较小文件的压缩密度。<br>使用brotli取代deflate来对文本文件压缩通常可以增加20%的压缩密度，而压缩与解压缩速度则大致不变。</p>
+<h3 id="status-code"><a href="#status-code" class="headerlink" title="/status/:code"></a>/status/:code</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@app.route('/status/&lt;codes&gt;', methods=['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'TRACE'])</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">view_status_code</span><span class="params">(codes)</span>:</span></div><div class="line">    <span class="string">"""Return status code or random status code if more than one are given"""</span></div><div class="line"></div><div class="line">    <span class="keyword">if</span> <span class="string">','</span> <span class="keyword">not</span> <span class="keyword">in</span> codes:</div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            code = int(codes)</div><div class="line">        <span class="keyword">except</span> ValueError:</div><div class="line">            <span class="keyword">return</span> Response(<span class="string">'Invalid status code'</span>, status=<span class="number">400</span>)</div><div class="line">        <span class="keyword">return</span> status_code(code)</div><div class="line"></div><div class="line">    choices = []</div><div class="line">    <span class="keyword">for</span> choice <span class="keyword">in</span> codes.split(<span class="string">','</span>):</div><div class="line">        <span class="keyword">if</span> <span class="string">':'</span> <span class="keyword">not</span> <span class="keyword">in</span> choice:</div><div class="line">            code = choice</div><div class="line">            weight = <span class="number">1</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            code, weight = choice.split(<span class="string">':'</span>)</div><div class="line"></div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            choices.append((int(code), float(weight)))</div><div class="line">        <span class="keyword">except</span> ValueError:</div><div class="line">            <span class="keyword">return</span> Response(<span class="string">'Invalid status code'</span>, status=<span class="number">400</span>)</div><div class="line"></div><div class="line">    code = weighted_choice(choices)</div><div class="line"></div><div class="line">    <span class="keyword">return</span> status_code(code)</div></pre></td></tr></table></figure>
+<p>HTTP状态码分类</p>
+<table>
+<thead>
+<tr>
+<th>分类</th>
+<th>分类描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1**</td>
+<td>信息，服务器收到请求，需要请求者继续执行操作</td>
+</tr>
+<tr>
+<td>2**</td>
+<td>成功，操作被成功接收并处理</td>
+</tr>
+<tr>
+<td>3**</td>
+<td>重定向，需要进一步的操作以完成请求</td>
+</tr>
+<tr>
+<td>4**</td>
+<td>客户端错误，请求包含语法错误或无法完成请求</td>
+</tr>
+<tr>
+<td>5**</td>
+<td>服务器错误，服务器在处理请求的过程中发生了错误</td>
+</tr>
+</tbody>
+</table>
+<p>HTTP状态码列表</p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>状态码英文名称</th>
+<th>中文描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>Continue</td>
+<td>继续。客户端应继续其请求</td>
+</tr>
+<tr>
+<td>101</td>
+<td>Switching Protocols</td>
+<td>切换协议。服务器根据客户端的请求切换协议。只能切换到更高级的协议，例如，切换到HTTP的新版本协议</td>
+</tr>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>请求成功。一般用于GET与POST请求</td>
+</tr>
+<tr>
+<td>201</td>
+<td>Created</td>
+<td>已创建。成功请求并创建了新的资源</td>
+</tr>
+<tr>
+<td>202</td>
+<td>Accepted</td>
+<td>已接受。已经接受请求，但未处理完成</td>
+</tr>
+<tr>
+<td>203</td>
+<td>Non-Authoritative Information</td>
+<td>非授权信息。请求成功。但返回的meta信息不在原始的服务器，而是一个副本</td>
+</tr>
+<tr>
+<td>204</td>
+<td>No Content</td>
+<td>无内容。服务器成功处理，但未返回内容。在未更新网页的情况下，可确保浏览器继续显示当前文档</td>
+</tr>
+<tr>
+<td>205</td>
+<td>Reset Content</td>
+<td>重置内容。服务器处理成功，用户终端（例如：浏览器）应重置文档视图。可通过此返回码清除浏览器的表单域</td>
+</tr>
+<tr>
+<td>206</td>
+<td>Partial Content</td>
+<td>部分内容。服务器成功处理了部分GET请求</td>
+</tr>
+<tr>
+<td>300</td>
+<td>Multiple Choices</td>
+<td>多种选择。请求的资源可包括多个位置，相应可返回一个资源特征与地址的列表用于用户终端（例如：浏览器）选择</td>
+</tr>
+<tr>
+<td>301</td>
+<td>Moved Permanently</td>
+<td>永久移动。请求的资源已被永久的移动到新URI，返回信息会包括新的URI，浏览器会自动定向到新URI。今后任何新的请求都应使用新的URI代替</td>
+</tr>
+<tr>
+<td>302</td>
+<td>Found</td>
+<td>临时移动。与301类似。但资源只是临时被移动。客户端应继续使用原有URI</td>
+</tr>
+<tr>
+<td>303</td>
+<td>See Other</td>
+<td>查看其它地址。与301类似。使用GET和POST请求查看</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Not Modified</td>
+<td>未修改。所请求的资源未修改，服务器返回此状态码时，不会返回任何资源。客户端通常会缓存访问过的资源，通过提供一个头信息指出客户端希望只返回在指定日期之后修改的资源</td>
+</tr>
+<tr>
+<td>305</td>
+<td>Use Proxy</td>
+<td>使用代理。所请求的资源必须通过代理访问</td>
+</tr>
+<tr>
+<td>306</td>
+<td>Unused</td>
+<td>已经被废弃的HTTP状态码</td>
+</tr>
+<tr>
+<td>307</td>
+<td>Temporary Redirect</td>
+<td>临时重定向。与302类似。使用GET请求重定向</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>客户端请求的语法错误，服务器无法理解</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+<td>请求要求用户的身份认证</td>
+</tr>
+<tr>
+<td>402</td>
+<td>Payment Required</td>
+<td>保留，将来使用</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>服务器理解请求客户端的请求，但是拒绝执行此请求</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>服务器无法根据客户端的请求找到资源（网页）。通过此代码，网站设计人员可设置”您所请求的资源无法找到”的个性页面</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed</td>
+<td>客户端请求中的方法被禁止</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable</td>
+<td>服务器无法根据客户端请求的内容特性完成请求</td>
+</tr>
+<tr>
+<td>407</td>
+<td>Proxy Authentication Required</td>
+<td>请求要求代理的身份认证，与401类似，但请求者应当使用代理进行授权</td>
+</tr>
+<tr>
+<td>408</td>
+<td>Request Time-out</td>
+<td>服务器等待客户端发送的请求时间过长，超时</td>
+</tr>
+<tr>
+<td>409</td>
+<td>Conflict</td>
+<td>服务器完成客户端的PUT请求是可能返回此代码，服务器处理请求时发生了冲突</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone</td>
+<td>客户端请求的资源已经不存在。410不同于404，如果资源以前有现在被永久删除了可使用410代码，网站设计人员可通过301代码指定资源的新位置</td>
+</tr>
+<tr>
+<td>411</td>
+<td>Length Required</td>
+<td>服务器无法处理客户端发送的不带Content-Length的请求信息</td>
+</tr>
+<tr>
+<td>412</td>
+<td>Precondition Failed</td>
+<td>客户端请求信息的先决条件错误</td>
+</tr>
+<tr>
+<td>413</td>
+<td>Request Entity Too Large</td>
+<td>由于请求的实体过大，服务器无法处理，因此拒绝请求。为防止客户端的连续请求，服务器可能会关闭连接。如果只是服务器暂时无法处理，则会包含一个Retry-After的响应信息</td>
+</tr>
+<tr>
+<td>414</td>
+<td>Request-URI Too Large</td>
+<td>请求的URI过长（URI通常为网址），服务器无法处理</td>
+</tr>
+<tr>
+<td>415</td>
+<td>Unsupported Media Type</td>
+<td>服务器无法处理请求附带的媒体格式</td>
+</tr>
+<tr>
+<td>416</td>
+<td>Requested range not satisfiable</td>
+<td>客户端请求的范围无效</td>
+</tr>
+<tr>
+<td>417</td>
+<td>Expectation Failed</td>
+<td>服务器无法满足Expect的请求头信息</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>服务器内部错误，无法完成请求</td>
+</tr>
+<tr>
+<td>501</td>
+<td>Not Implemented</td>
+<td>服务器不支持请求的功能，无法完成请求</td>
+</tr>
+<tr>
+<td>502</td>
+<td>Bad Gateway</td>
+<td>充当网关或代理的服务器，从远端服务器接收到了一个无效的请求</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable</td>
+<td>由于超载或系统维护，服务器暂时的无法处理客户端的请求。延时的长度可包含在服务器的Retry-After头信息中</td>
+</tr>
+<tr>
+<td>504</td>
+<td>Gateway Time-out</td>
+<td>充当网关或代理的服务器，未及时从远端服务器获取请求</td>
+</tr>
+<tr>
+<td>505</td>
+<td>HTTP Version not supported</td>
+<td>服务器不支持请求的HTTP协议的版本，无法完成处理</td>
+</tr>
+</tbody>
+</table>
+<h3 id="response-headers-key-val"><a href="#response-headers-key-val" class="headerlink" title="/response-headers?key=val"></a>/response-headers?key=val</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@app.route('/response-headers', methods=['GET', 'POST'])</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">response_headers</span><span class="params">()</span>:</span></div><div class="line">    <span class="string">"""Returns a set of response headers from the query string """</span></div><div class="line">    headers = MultiDict(request.args.items(multi=<span class="keyword">True</span>))</div><div class="line">    response = jsonify(list(headers.lists()))</div><div class="line"></div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">        original_data = response.data</div><div class="line">        d = &#123;&#125;</div><div class="line">        <span class="keyword">for</span> key <span class="keyword">in</span> response.headers.keys():</div><div class="line">            value = response.headers.get_all(key)</div><div class="line">            <span class="keyword">if</span> len(value) == <span class="number">1</span>:</div><div class="line">                value = value[<span class="number">0</span>]</div><div class="line">            d[key] = value</div><div class="line">        response = jsonify(d)</div><div class="line">        <span class="keyword">for</span> key, value <span class="keyword">in</span> headers.items(multi=<span class="keyword">True</span>):</div><div class="line">            response.headers.add(key, value)</div><div class="line">        response_has_changed = response.data != original_data</div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> response_has_changed:</div><div class="line">            <span class="keyword">break</span></div><div class="line">    <span class="keyword">return</span> response</div></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -588,7 +842,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#httpbin是什么"><span class="nav-number">1.</span> <span class="nav-text">httpbin是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#httpbin怎么用"><span class="nav-number">1.1.</span> <span class="nav-text">httpbin怎么用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#怎么安装和运行"><span class="nav-number">1.2.</span> <span class="nav-text">怎么安装和运行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口"><span class="nav-number">2.</span> <span class="nav-text">接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">2.1.</span> <span class="nav-text">/</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ip"><span class="nav-number">2.2.</span> <span class="nav-text">/ip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#uuid"><span class="nav-number">2.3.</span> <span class="nav-text">/uuid</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#user-agent"><span class="nav-number">2.4.</span> <span class="nav-text">/user-agent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#headers"><span class="nav-number">2.5.</span> <span class="nav-text">/headers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#get"><span class="nav-number">2.6.</span> <span class="nav-text">/get</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#post"><span class="nav-number">2.7.</span> <span class="nav-text">/post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#patch-put-delete"><span class="nav-number">2.8.</span> <span class="nav-text">/patch    /put    /delete</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#anything-anything-anything"><span class="nav-number">2.9.</span> <span class="nav-text">/anything    /anything/:anything</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#encoding-utf8"><span class="nav-number">2.10.</span> <span class="nav-text">/encoding/utf8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gzip"><span class="nav-number">2.11.</span> <span class="nav-text">/gzip</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#httpbin是什么"><span class="nav-number">1.</span> <span class="nav-text">httpbin是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#httpbin怎么用"><span class="nav-number">1.1.</span> <span class="nav-text">httpbin怎么用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#怎么安装和运行"><span class="nav-number">1.2.</span> <span class="nav-text">怎么安装和运行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口"><span class="nav-number">2.</span> <span class="nav-text">接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">2.1.</span> <span class="nav-text">/</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ip"><span class="nav-number">2.2.</span> <span class="nav-text">/ip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#uuid"><span class="nav-number">2.3.</span> <span class="nav-text">/uuid</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#user-agent"><span class="nav-number">2.4.</span> <span class="nav-text">/user-agent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#headers"><span class="nav-number">2.5.</span> <span class="nav-text">/headers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#get"><span class="nav-number">2.6.</span> <span class="nav-text">/get</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#post"><span class="nav-number">2.7.</span> <span class="nav-text">/post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#patch-put-delete"><span class="nav-number">2.8.</span> <span class="nav-text">/patch    /put    /delete</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#anything-anything-anything"><span class="nav-number">2.9.</span> <span class="nav-text">/anything    /anything/:anything</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#encoding-utf8"><span class="nav-number">2.10.</span> <span class="nav-text">/encoding/utf8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gzip"><span class="nav-number">2.11.</span> <span class="nav-text">gzip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deflate"><span class="nav-number">2.12.</span> <span class="nav-text">/deflate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#brotli"><span class="nav-number">2.13.</span> <span class="nav-text">/brotli</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#status-code"><span class="nav-number">2.14.</span> <span class="nav-text">/status/:code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#response-headers-key-val"><span class="nav-number">2.15.</span> <span class="nav-text">/response-headers?key=val</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -733,7 +987,7 @@
         var disqus_config = function () {
           this.page.url = 'http://csh012.com/2017/09/04/httpbin/';
           this.page.identifier = '2017/09/04/httpbin/';
-          this.page.title = 'httpbin';
+          this.page.title = '';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://csh012.disqus.com/embed.js';
